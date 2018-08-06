@@ -3,7 +3,7 @@
  */
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-    .register('./service-worker.js', {
+    .register('./sw.js', {
       scope: './'
     })
     .then(function () {
@@ -17,7 +17,7 @@ if ('serviceWorker' in navigator) {
 let restaurants,
   neighborhoods,
   cuisines
-var map
+var newMap
 var markers = []
 
 /**
@@ -84,7 +84,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 }
 
 /**
- * Initialize Google map, called from HTML.
+ * Initialize leaflet map, called from HTML.
  */
 window.initMap = () => {
   let loc = {
@@ -132,7 +132,9 @@ resetRestaurants = (restaurants) => {
   ul.innerHTML = '';
 
   // Remove all map markers
-  self.markers.forEach(m => m.setMap(null));
+  if (self.markers) {
+    self.markers.forEach(marker => marker.remove());
+  }
   self.markers = [];
   self.restaurants = restaurants;
 }
@@ -157,10 +159,9 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = restaurant.name;
   li.append(image);
 
-  const name = document.createElement('h3');
+  const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -168,12 +169,12 @@ createRestaurantHTML = (restaurant) => {
   neighborhood.innerHTML = restaurant.neighborhood;
   li.append(neighborhood);
 
-  const address = document.createElement('address');
+  const address = document.createElement('p');
   address.innerHTML = restaurant.address;
   li.append(address);
 
   const more = document.createElement('a');
-  more.innerHTML = 'View Details of ' + restaurant.name;
+  more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
 
