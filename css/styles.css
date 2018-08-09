@@ -20,7 +20,7 @@ ul, li {
 	color: #333;
 }
 a {
-	color: orange;
+	color: #ffa500;
 	text-decoration: none;
 }
 a:hover, a:focus {
@@ -107,7 +107,7 @@ header .skip-link {
   top: -40px;
   left: 0;
   background: #ffa500;
-  color: white;
+  color: #fff;
   padding: 8px;
   z-index: 100;
   text-transform: uppercase;
@@ -132,14 +132,14 @@ header .skip-link:focus {
   align-items: center;
 }
 .filter-options h2 {
-  color: white;
+  color: #fff;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
   margin: 0 20px;
 }
 .filter-options select {
-  background-color: white;
+  background-color: #fff;
   border: 1px solid #fff;
   font-family: Arial,sans-serif;
   font-size: 11pt;
@@ -194,7 +194,7 @@ header .skip-link:focus {
 }
 #restaurants-list li a {
 	width: 100%;
-  background-color: orange;
+  background-color: #ffa500;
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
@@ -212,7 +212,7 @@ header .skip-link:focus {
   z-index: 1000;
 }
 .inside #map-container {
-  background: blue none repeat scroll 0 0;
+  background: #00f none repeat scroll 0 0;
   height: 87%;
   width: 100%;
 	margin: auto;

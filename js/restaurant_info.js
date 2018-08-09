@@ -1,15 +1,8 @@
 let restaurant;
-var newMap;
+var map;
 
 /**
- * Initialize map as soon as the page is loaded.
- */
-document.addEventListener('DOMContentLoaded', (event) => {
-  initMap();
-});
-
-/**
- * Initialize leaflet map
+ * Initialize Google map, called from HTML.
  */
 window.initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
@@ -25,7 +18,7 @@ window.initMap = () => {
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
   });
-} 
+}
 
 /**
  * Get current restaurant from page URL.
@@ -65,6 +58,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt= restaurant.name;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -102,7 +96,7 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   title.innerHTML = 'Reviews';
   container.appendChild(title);
 
@@ -128,7 +122,7 @@ createReviewHTML = (review) => {
   name.innerHTML = review.name;
   li.appendChild(name);
 
-  const date = document.createElement('p');
+  const date = document.createElement('time');
   date.innerHTML = review.date;
   li.appendChild(date);
 
@@ -139,6 +133,8 @@ createReviewHTML = (review) => {
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
   li.appendChild(comments);
+
+  li.setAttribute('tabindex', '0');
 
   return li;
 }

@@ -1,0 +1,19 @@
+{
+  "name": "restaurant-review-project",
+  "version": "1.0.0",
+  "description": "restaurant review app for udacity",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Th13um/restaurant-review-project.git"
+  },
+  "author": "Mathieu DUPRE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Th13um/restaurant-review-project/issues"
+  },
+  "homepage": "https://github.com/Th13um/restaurant-review-project#readme"
+}
