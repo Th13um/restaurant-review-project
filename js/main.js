@@ -6,10 +6,10 @@ if ('serviceWorker' in navigator) {
     .register('./sw.js', {
       scope: './'
     })
-    .then(function () {
+    .then(function() {
       console.log('Service Worker registered');
     })
-    .catch(function () {
+    .catch(function() {
       console.log('Service Worker failed to register');
     })
 }
